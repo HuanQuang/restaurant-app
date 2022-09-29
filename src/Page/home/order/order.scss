@@ -1,0 +1,79 @@
+.order-wrapper {
+    display: flex;
+    padding: 0 45px;
+    .order-content {
+        .order-contact {
+            display: flex;
+            height: 78px;
+            margin-top: 45px;
+            align-items: center;
+            img {
+                height: 100%;
+                margin-right: 20px;
+                transform: rotateY(180deg);
+            }
+            div {
+                align-self: center;
+            }
+            h3 {
+                font-size: 14px;
+            }
+            .phone {
+                color: red;
+                padding-top: 4px;
+                padding-bottom: 1px;
+            }
+            .button {
+                align-self: center;
+                margin-left: 10px;
+            }
+        }
+        .name--section {
+            font-family: 'Pangolin';
+            font-size: 30px;
+            font-weight: 400;
+            color: #ffb100;
+        }
+        h2 {
+            font-size: 32px;
+            padding: 11px 0;
+            span {
+                color: red;
+            }
+        }
+        p {
+            font-size: 14px;
+        }
+    }
+    .order-img {
+        img {
+            min-width: 300px;
+            width: 100%;
+            margin-left: 20px;
+        }
+    }
+}
+@media screen and (max-width: 740px) {
+    .order-wrapper {
+        padding: 0 20px;
+        .order-content {
+            text-align: center;
+            h2 {
+                font-size: 20px;
+            }
+            p {
+                text-align: justify;
+            }
+            .order-contact {
+                margin-top: 20px;
+                img {
+                    margin: 0;
+                    height: 70%;
+                }
+            }
+        }
+        .order-img {
+            display: none;
+        }
+    }
+}

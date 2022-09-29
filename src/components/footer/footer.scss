@@ -1,0 +1,74 @@
+.footerWrapper {
+    background-color: rgba(0, 0, 0, 0.87);
+    padding: 90px 75px 80px;
+    .infomation {
+        display: flex;
+        flex-wrap: wrap;
+        .bussiness__hour {
+            display: flex;
+            padding: 32px;
+            width: 33%;
+            justify-content: space-between;
+            color: white;
+            font-size: 16px;
+            span {
+                line-height: 36px;
+                display: block;
+            }
+            .status {
+                color: #fbb403;
+            }
+            min-width: 315px;
+        }
+        .contact {
+            padding: 32px;
+            width: 33%;
+            min-width: 280px;
+            color: white;
+            &__title {
+                font-size: 25px;
+                margin-bottom: 30px;
+            }
+            .MuiSvgIcon-root {
+                font-size: 20px;
+                color: #fbb403;
+                margin-right: 10px;
+            }
+            .text {
+                font-size: 14px;
+                line-height: 36px;
+                display: flex;
+                align-items: center;
+                cursor: pointer;
+                &:hover {
+                    color: #fbb403;
+                }
+            }
+            .social {
+                display: flex;
+                align-items: center;
+                height: 36px;
+                cursor: pointer;
+            }
+        }
+    }
+}
+@media screen and (max-width: 740px) {
+    .footerWrapper {
+        padding: 20px;
+        .infomation {
+            .bussiness__hour {
+                width: 100%;
+                padding: 0;
+                min-width: 0;
+                margin-bottom: 40px;
+            }
+            .contact {
+                padding: 0;
+                .contact__title {
+                    margin-bottom: 10px;
+                }
+            }
+        }
+    }
+}

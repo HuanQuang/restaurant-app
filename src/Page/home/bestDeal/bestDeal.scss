@@ -1,0 +1,144 @@
+.dealWrapper {
+    text-align: center;
+    padding: 0 75px;
+    .name-ssDeal {
+        font-family: 'Pangolin';
+        padding: 20px 0 5px 0;
+        font-size: 18px;
+        color: #ffb100;
+    }
+    .deal--describe {
+        font-size: 32px;
+        font-weight: 600;
+    }
+    .deal--products {
+        margin-top: 35px;
+        .swiper {
+            padding-left: 43px;
+        }
+        .deal--product--item {
+            margin: 10px 0 40px;
+            width: 230px !important;
+            border-radius: 10px 10px 0 0;
+            &:hover {
+                background-color: rgba(255, 81, 78, 0.349);
+                transform: translateY(-6px);
+                transition: all ease-in 0.3s;
+                .img--wrap {
+                    background-color: rgba(240, 38, 34, 0.801);
+                    .animate {
+                        &::before {
+                            content: '';
+                            background-color: white;
+                            animation: width 0.3s;
+                            transition: all 0.3s ease-in;
+                            width: 100%;
+                            height: 100%;
+                            position: absolute;
+                            top: 0;
+                            left: 0;
+                            border-radius: 25px;
+                        }
+                        &--active {
+                            color: #ff514e;
+                        }
+                    }
+                }
+                .infor {
+                    .cake__price {
+                        color: #fa3a36;
+                    }
+                }
+            }
+            .img--wrap {
+                border-radius: 10px 10px 120px 120px;
+                background-color: rgba(255, 81, 78, 0.75);
+                img {
+                    margin-top: 10px;
+                    width: 90%;
+                }
+                .animate {
+                    position: relative;
+                    padding: 12px 18px;
+                    font-size: 13px;
+                    margin-top: 15px;
+                    background-color: #ff514e;
+                    font-weight: 500;
+                    margin-left: auto;
+                    width: fit-content;
+                    margin-right: auto;
+                    border-radius: 25px;
+                    color: white;
+                    &--active {
+                        padding: 12px 18px;
+                        font-size: 13px;
+                        font-weight: 500;
+                        position: absolute;
+                        width: 100%;
+                        height: 100%;
+                        border-radius: 25px;
+                        top: 0;
+                        left: 0;
+                        transition: 0.4s;
+                    }
+                }
+            }
+            .infor {
+                padding: 0 10px;
+                .cakeName {
+                    min-height: 50px;
+                    font-size: 22px;
+                    margin: 10px 0;
+                }
+                .cake__Description {
+                    font-size: 14px;
+                }
+                .cake__price {
+                    margin: 10px 0 20px;
+                    font-size: 18px;
+                    color: #fbb403;
+                }
+            }
+        }
+        .swiper-pagination-bullet {
+            width: 20px;
+            height: 20px;
+            text-align: center;
+            line-height: 20px;
+            font-size: 12px;
+            opacity: 1;
+            margin-top: 20px;
+            color: #fff;
+            border: 2px solid #fbb403;
+            box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+            background-color: transparent;
+            &-active {
+                color: #fff;
+                border: 2px solid #fbb403;
+                box-shadow: 0 2px 5px rgb(0 0 0 / 20%);
+                background-color: rgb(255, 208, 0);
+            }
+        }
+    }
+}
+@keyframes width {
+    from {
+        width: 0%;
+    }
+    to {
+        width: 100%;
+    }
+}
+@media screen and (max-width: 740px) {
+    .dealWrapper {
+        padding: 0 20px;
+        .deal--describe {
+            font-size: 18px;
+        }
+        .deal--products {
+            .swiper {
+                padding-left: 32px !important;
+            }
+        }
+    }
+}

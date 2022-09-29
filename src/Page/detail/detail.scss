@@ -1,0 +1,245 @@
+.banner--shop {
+    background: url('../../assets/Shop/banner.jpg') no-repeat center center fixed;
+    background-size: cover;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 80px;
+}
+.product__detail {
+    padding: 0 75px;
+
+    &--overview {
+        display: flex;
+        .product__detail__img {
+            flex: 1;
+            padding: 24px;
+            img {
+                width: 100%;
+            }
+        }
+        .product__detail__content {
+            flex: 1;
+            padding: 24px;
+            &--name {
+                font-size: 28px;
+                margin-bottom: 15px;
+            }
+            &--rate {
+                margin-bottom: 15px;
+            }
+            &--price {
+                font-size: 25px;
+                margin-bottom: 15px;
+                color: #ff514e;
+                font-weight: 700;
+            }
+            &--country {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+            &--dsc {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+            h2 {
+                font-size: 18px;
+                margin-bottom: 7px;
+            }
+            label {
+                display: block;
+                margin: 3px 0;
+                padding: 10px 0px;
+                input {
+                    margin-right: 15px;
+                }
+            }
+            .addShop {
+                display: flex;
+                margin-bottom: 20px;
+                height: 90px;
+                justify-content: space-between;
+                border-top: 1px solid rgba(0, 0, 0, 0.08);
+                border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+                align-items: center;
+                &__quality {
+                    display: flex;
+                    align-items: center;
+                    min-width: 100px;
+                    i {
+                        padding: 6px 8px;
+                        background-color: rgba(0, 0, 0, 0.05);
+                        border-radius: 50%;
+                        cursor: pointer;
+                        &:hover {
+                            color: #ff514e;
+                        }
+                    }
+                    span {
+                        padding: 6px 8px;
+                    }
+                }
+                .addShop--btn {
+                    display: flex;
+                    color: white;
+                    align-items: center;
+                    background-color: #ff514e;
+                    padding: 10px 15px;
+                    border-radius: 25px;
+                    border: none;
+                    justify-content: center;
+                    flex: 1;
+                    cursor: pointer;
+                    i {
+                        margin-right: 4px;
+                    }
+                }
+                .like--btn {
+                    text-align: center;
+                    min-width: 100px;
+                    i {
+                        padding: 6px 8px;
+                        background-color: rgba(0, 0, 0, 0.05);
+                        border-radius: 50%;
+                        cursor: pointer;
+                        &:hover {
+                            color: #ff514e;
+                        }
+                    }
+                }
+            }
+            &--commit {
+                margin-bottom: 15px;
+                padding: 4px 7px;
+                border-left: 4px solid #ff514e;
+                font-size: 14px;
+                i {
+                    color: #ff514e;
+                    margin-right: 8px;
+                }
+            }
+        }
+    }
+    &--nutrion {
+        margin: 100px 0;
+        padding: 0 50px;
+        &--tab {
+            display: flex;
+            &--btn {
+                padding: 8px 10px;
+                color: black;
+                cursor: pointer;
+            }
+            .btn--active {
+                background: #137547;
+            }
+        }
+        &--tabContent {
+            display: none;
+            &--des {
+                margin: 20px 0;
+                font-size: 18px;
+                font-family: 'Pangolin';
+                color: rgb(224, 153, 0);
+            }
+            input {
+                margin: 20px 20px 20px 0;
+                width: 100%;
+                padding: 5px 20px;
+                border: none;
+                border-radius: 26px;
+                height: 40px;
+                outline-color: green;
+                background: linear-gradient(to right, #e9c8b9, #e9d0cb);
+            }
+            button {
+                cursor: pointer;
+                padding: 8px 22px;
+                border-radius: 20px;
+                border: none;
+                background: brown;
+                color: white;
+            }
+            .feedback_board {
+                width: 100%;
+                border: 1px solid #137547;
+                margin-top: 10px;
+                min-height: 140px;
+                padding: 20px 10px;
+                .comment {
+                    line-height: 30px;
+                    font-family: 'Pangolin';
+                    color: orange;
+                    i {
+                        color: #137547;
+                        margin-right: 10px;
+                    }
+                }
+            }
+            table {
+                width: 100%;
+                .table--border {
+                    border-bottom: 1px solid rgba(0, 0, 0, 0.404);
+                    padding-bottom: 10px;
+                    &:nth-child(1) {
+                        border-right: 1px solid rgba(0, 0, 0, 0.404);
+                    }
+                    p {
+                        margin-top: 4px;
+                        font-size: 14px;
+                        font-family: 'Pangolin';
+                        color: rgb(235, 171, 12);
+                    }
+                }
+                .table--row2 {
+                    padding-top: 10px;
+                    &:nth-child(1) {
+                        border-right: 1px solid rgba(0, 0, 0, 0.404);
+                    }
+                }
+            }
+        }
+        .tab--active {
+            display: block;
+        }
+    }
+}
+@media screen and (max-width: 740px) {
+    .detail--wrapper {
+        .banner--shop {
+            height: 100px;
+            margin-bottom: 0;
+        }
+        .product__detail {
+            padding: 20px;
+            .product__detail--overview {
+                flex-direction: column;
+                .product__detail__img {
+                    padding: 0;
+                }
+                .product__detail__content {
+                    padding: 20px 0;
+                    .addShop {
+                        .like--btn {
+                            display: none;
+                        }
+                    }
+                }
+            }
+            .product__detail--nutrion {
+                margin: 50px 0;
+                padding: 0;
+                .product__detail--nutrion--tabContent {
+                    .product__detail--nutrion--tabContent--des {
+                        text-align: justify;
+                    }
+                    table {
+                        font-size: 10px;
+                        p {
+                            font-size: 10px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

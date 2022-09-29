@@ -1,0 +1,87 @@
+.notifyWrapper {
+    background: url('../../../assets/Home/ingredients.jpg') no-repeat center;
+    height: fit-content;
+    background-size: cover;
+    .notifyGrid {
+        display: flex;
+        width: 95%;
+        margin: 0 auto;
+        justify-content: space-between;
+        flex-wrap: wrap;
+        .col {
+            min-width: 300px;
+            margin-top: 20px;
+            width: 50%;
+            &:nth-child(1) {
+                place-items: flex-start;
+                display: flex;
+                flex-direction: column;
+            }
+            &:nth-child(2) {
+                place-items: flex-end;
+                display: flex;
+                flex-direction: column;
+            }
+            .notify-item {
+                position: relative;
+                font-family: 'Pangolin';
+                height: 180px;
+                background-color: white;
+                box-shadow: 1px 2px 4px rgba(0, 0, 0, 0.5);
+                max-width: 380px;
+                margin: 40px 0;
+                border-radius: 10px;
+                padding: 40px;
+                .notify-title {
+                    color: brown;
+                    padding-bottom: 10px;
+                }
+                .notify-describ {
+                    font-size: 19px;
+                }
+                + .notify-item-left {
+                    margin-left: 70px;
+                }
+                + .notify-item-right {
+                    margin-right: 70px;
+                }
+                &:hover {
+                    transform: translateY(-20px);
+                    transition: all ease-in-out 0.3s;
+                    background-color: #3cff00da;
+                    color: white;
+                }
+                .notify-number {
+                    position: absolute;
+                    background-color: #ffb100;
+                    padding: 12px 12px;
+                    border-radius: 50%;
+                    border: 4px solid #44a12c;
+                    top: -24px;
+                    color: white;
+                    font-weight: 800;
+                }
+            }
+        }
+    }
+}
+@media screen and (max-width: 740px) {
+    .notifyWrapper {
+        .notifyGrid {
+            width: 100%;
+            .col {
+                align-items: center !important;
+                margin: 0;
+                width: 100%;
+                padding: 0 10px;
+                .notify-item {
+                    padding: 30px;
+                }
+                .notify-item-left,
+                .notify-item-right {
+                    margin: 0 !important;
+                }
+            }
+        }
+    }
+}

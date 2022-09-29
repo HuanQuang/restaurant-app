@@ -1,0 +1,87 @@
+.menuWrapper {
+    background: url('../../../assets/Home/banner2.png') no-repeat center;
+    height: fit-content;
+    background-size: cover;
+    padding: 50px 20px 0 20px;
+    text-align: center;
+
+    .menu--title {
+        font-family: 'Pangolin';
+        font-size: 23px;
+        color: #ffb100;
+    }
+    .menu--subtitle {
+        padding: 16px;
+        font-size: 30px;
+    }
+    .price {
+        color: red;
+        padding-bottom: 20px;
+    }
+    .category-food {
+        margin: 50px auto;
+        padding: 30px 70px 0 70px;
+        background: #ededed;
+        width: 85%;
+        border-radius: 10px;
+        position: relative;
+        .category-list {
+            padding: 10px 0;
+        }
+        .item {
+            width: 90px;
+            height: 90px;
+            box-shadow: 0 1px 1px 0 rgba(128, 128, 128, 0.541);
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 3px 20px rgb(0 0 0 / 8%);
+            margin: 20px 0 50px;
+            .img {
+                height: 40%;
+                margin: 10px 0;
+            }
+        }
+        .btn {
+            position: absolute;
+            top: 60%;
+            color: brown;
+            cursor: pointer;
+            border: none;
+        }
+        .prev-btn {
+            left: 15px;
+        }
+        .next-btn {
+            right: 15px;
+        }
+    }
+}
+@media screen and (max-width: 740px) {
+    .menuWrapper {
+        padding: 20px;
+        .menu--subtitle {
+            font-size: 18px;
+            padding: 6px;
+        }
+        .price {
+            font-size: 18px;
+        }
+        .category-food {
+            margin: 20px auto;
+            width: 100%;
+            padding: 10px 30px 0 30px;
+            .category-list {
+                font-size: 15px;
+                padding: 10px;
+            }
+            .prev-btn {
+                left: 0;
+                top: 53%;
+            }
+            .next-btn {
+                right: 0;
+                top: 53%;
+            }
+        }
+    }
+}
