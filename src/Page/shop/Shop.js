@@ -31,7 +31,7 @@ function ShopPage() {
     };
     // xử lí hàm tìm kiếm theo tên sản phẩm
     const handleSearch = (e) => {
-        setSearch(e.target.value.trim());
+        setSearch(e.target.value.trim().toLowerCase());
     };
     // xử lí hàm sắp xếp theo giá sản phẩm
     const handlePrice = (e) => {
