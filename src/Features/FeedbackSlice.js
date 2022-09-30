@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 const FeedbackSlice = createSlice({
     name: 'feedback',
-    initialState: [...JSON.parse(localStorage.getItem('list'))],
+    initialState: [...JSON.parse(localStorage.getItem('list') ? localStorage.getItem('list') : '["Okela"]')],
     reducers: {
         addFeedback: (state, action) => {
             state.push(action.payload);
