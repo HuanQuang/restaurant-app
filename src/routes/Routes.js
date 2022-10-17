@@ -4,6 +4,7 @@ import CartPage from '../Page/Cart/Cart';
 import Login from '../Page/auth/Login';
 import Error from '../components/Error/Error';
 import Detail from '../Page/detail/Detail';
+import Register from '../Page/auth/Register';
 
 const MainRoutes = {
     HOME: { id: 1, path: '/', component: HomePage },
@@ -12,5 +13,6 @@ const MainRoutes = {
     CART: { id: 4, path: '/cart', component: CartPage },
     PRODUCT: { id: 5, path: '/shop/:idProduct', component: Detail },
     LOGIN: { id: 6, path: '/login', component: Login },
+    REGISTER: { id: 7, path: '/register', component: Register },
 };
 export default MainRoutes;

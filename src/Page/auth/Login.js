@@ -1,27 +1,49 @@
 import './login.scss';
 import ImageAuth from '../../assets/Auth/Image';
-import auth from '../../firebase-conflig';
-import { signInWithPopup, GoogleAuthProvider } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
 import MainRoutes from '../../routes/Routes';
-// import { handleSignUp } from './Auth';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
 function Login() {
-    const Navigate = useNavigate();
-    const handleSignUp = () => {
-        const provider = new GoogleAuthProvider();
-        signInWithPopup(auth, provider)
-            .then((rel) => {
-                const email = rel.user.email;
-                const name = rel.user.displayName;
-                const avatar = rel.user.photoURL;
-                localStorage.setItem('email', email);
-                localStorage.setItem('name', name);
-                localStorage.setItem('avatar', avatar);
-                setTimeout(Navigate(MainRoutes.HOME.path), 2000);
-            })
-            .catch((error) => {
-                console.log('error', error);
-            });
+    function setCookie(cname, cvalue, exdays) {
+        const d = new Date();
+        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
+        let expires = 'expires=' + d.toUTCString();
+        document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
+    }
+    function getCookie(cname) {
+        let name = cname + '=';
+        let decodedCookie = decodeURIComponent(document.cookie);
+        let ca = decodedCookie.split(';');
+        for (let i = 0; i < ca.length; i++) {
+            let c = ca[i];
+            while (c.charAt(0) === ' ') {
+                c = c.substring(1);
+            }
+            if (c.indexOf(name) === 0) {
+                return c.substring(name.length, c.length);
+            }
+        }
+        return '';
+    }
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
+    const [message, setMessage] = useState('');
+    const handleUsername = (e) => {
+        setUsername(e.target.value);
+    };
+    const handlePassword = (e) => {
+        setPassword(e.target.value);
+    };
+    const handleLogin = () => {
+        axios.post('http://localhost:5000/user/login', { username: username, password: password }).then((response) => {
+            if (response.data.token) {
+                setCookie('token', response.data.token, 1);
+                setMessage('');
+            } else {
+                setMessage(response.data.message);
+            }
+        });
     };
     return (
         <div className="login-Page">
@@ -33,35 +55,49 @@ function Login() {
                     <div className="login__form">
                         <h2>JOIN WITH US</h2>
                         <p className="login__form--qa">
-                            Don't have an Account? <span className="toCreate">Create an account</span>
+                            Don't have an Account?{' '}
+                            <Link to={MainRoutes.REGISTER.path} className="toCreate">
+                                Create an account
+                            </Link>
                         </p>
-                        <div className="login__form--field">
+                        <form className="login__form--field">
+                            <p className="login__form--field--message">{message}</p>
                             <label>
-                                Email address
+                                Username
                                 <div className="login__form--field--input">
                                     <i class="fa-solid fa-envelope"></i>
-                                    <input placeholder="Your email" type="email"></input>
+                                    <input
+                                        required="true"
+                                        placeholder="Your Username"
+                                        type="email"
+                                        onChange={handleUsername}
+                                    ></input>
                                 </div>
-                                <span className="message"></span>
                             </label>
                             <label>
                                 Password
                                 <div className="login__form--field--input">
                                     <i className="fa-solid fa-lock"></i>
-                                    <input placeholder="Your password" type="password"></input>
+                                    <input
+                                        placeholder="Your password"
+                                        type="password"
+                                        required="true"
+                                        onChange={handlePassword}
+                                    ></input>
                                 </div>
-                                <span className="message"></span>
                             </label>
                             <div className="login__choose">
                                 <input type="checkbox"></input>
                                 <span>Save your password</span>
                             </div>
-                        </div>
-                        <button className="submit--btn">LOG IN</button>
+                        </form>
+                        <button className="submit--btn" onClick={handleLogin}>
+                            LOG IN
+                        </button>
                         <span className="login__separate">
                             <span>OR</span>
                         </span>
-                        <div className="login--logo" id="googleButton" onClick={handleSignUp}>
+                        <div className="login--logo" id="googleButton">
                             <img src={ImageAuth.ggIcon} alt="logo"></img>
                             <span>Log in with Google</span>
                         </div>

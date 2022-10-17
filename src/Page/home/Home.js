@@ -1,4 +1,5 @@
 import './home.scss';
+import 'react-toastify/dist/ReactToastify.css';
 import Slide from './bannerSlide/Banner';
 import Header from '../../components/header/Header';
 import Delivery from './delivery/Delivery';

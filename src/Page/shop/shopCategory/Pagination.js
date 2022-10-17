@@ -1,6 +1,7 @@
 import AddShoppingCartIcon from '@mui/icons-material/AddShoppingCart';
 import FavoriteBorderIcon from '@mui/icons-material/FavoriteBorder';
 import FmdGoodIcon from '@mui/icons-material/FmdGood';
+import { ToastContainer, toast } from 'react-toastify';
 import StarRateIcon from '@mui/icons-material/StarRate';
 import { Fragment, useContext, useEffect, useState } from 'react';
 import ReactPaginate from 'react-paginate';
@@ -12,6 +13,11 @@ import './pagination.scss';
 function Pagination(props) {
     const resual = useContext(Result);
     const { data } = props;
+    const notify = () => {
+        toast.success('Thêm sản phẩm thành công!', {
+            position: toast.POSITION.TOP_RIGHT,
+        });
+    };
     const [currentItems, setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
@@ -28,18 +34,6 @@ function Pagination(props) {
         const newOffset = (event.selected * itemsPerPage) % data.length;
         setItemOffset(newOffset);
     };
-    // hiển thị thông báo mỗi lần add vào cart
-    const notifySucess = () => {
-        const parentTag = document.querySelector('.parent-active');
-        const box = document.createElement('div');
-        box.classList.add('addSucces');
-        box.innerHTML = 'Thêm sản phẩm thành công';
-        parentTag.appendChild(box);
-        setTimeout(() => {
-            parentTag.removeChild(box);
-        }, 2000);
-    };
-
     // Lọc theo giá sản phẩm
     const newList = currentItems.filter((item) => {
         switch (Number(rangePrice)) {
@@ -103,7 +97,7 @@ function Pagination(props) {
                                                 e.preventDefault();
                                                 const action = addTocart(item);
                                                 dispatch(action);
-                                                notifySucess();
+                                                notify();
                                             }}
                                             sx={{
                                                 padding: '4px',
@@ -145,6 +139,7 @@ function Pagination(props) {
                 pageClassName={'pageNumber'}
                 onPageChange={handlePageClick}
             />
+            <ToastContainer autoClose={2000} pauseOnFocusLoss={false} />
         </Fragment>
     ) : (
         <div className="emptyProduct">Không có sản phẩm phù hợp</div>

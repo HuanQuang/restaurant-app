@@ -2,6 +2,7 @@
     background: #ffffff;
     height: 100vh;
     padding: 75px;
+    max-width: 1440px;
     .login__wrap {
         display: flex;
         box-shadow: 0 4px 25px rgb(0 0 0 / 7%);
@@ -9,6 +10,7 @@
         border-radius: 8px;
         .login__wrap--img {
             flex: 1;
+            min-width: 350px;
             img {
                 width: 100%;
             }
@@ -29,9 +31,15 @@
                 .toCreate {
                     color: #ff514e;
                     font-weight: 600;
+                    cursor: pointer;
                 }
                 &--field {
                     margin-bottom: 15px;
+                    &--message {
+                        color: #ff0400;
+                        font-size: 13px;
+                        margin-bottom: 8px;
+                    }
                     label {
                         font-size: 13px;
                         .login__form--field--input {
@@ -114,6 +122,17 @@
                         font-size: 20px;
                     }
                 }
+            }
+        }
+    }
+}
+@media screen and (max-width: 840px) {
+    .login-Page {
+        padding: 0;
+        .login__wrap {
+            justify-content: center;
+            .login__wrap--img {
+                display: none;
             }
         }
     }
