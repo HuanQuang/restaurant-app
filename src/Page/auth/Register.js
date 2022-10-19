@@ -22,13 +22,14 @@ function Register() {
         formState: { errors },
     } = useForm();
     const onSubmit = async (data) => {
-        await axios.post('http://localhost:5000/user/register', data).then((responser) => {
-            if (responser.data.message === 'Đăng kí thành công') {
+        await axios.post('http://localhost:5000/user/register', data).then((response) => {
+            console.log(response.data.message);
+            if (response.data.message === 'Đăng kí thành công') {
                 success('Đăng kí thành công');
-                setTimeout(navigate(MainRoutes.LOGIN.path), 4000);
-            } else {
-                loser('Đăng kí thất bại');
-            }
+                setTimeout(() => navigate(MainRoutes.LOGIN.path), 4000);
+            } else if (response.data.message === 'Tài khoản đã tồn tại') {
+                loser(response.data.message);
+            } else loser('Đăng kí thất bại');
         });
     };
 

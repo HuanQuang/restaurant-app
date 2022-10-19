@@ -8,6 +8,10 @@ import auth from '../../firebase-conflig';
 import './header.scss';
 
 function Header() {
+    const user = useSelector((state) => {
+        return state.user.user;
+    });
+
     const Navigate = useNavigate();
     const handleSignOut = () => {
         signOut(auth)
@@ -67,9 +71,10 @@ function Header() {
                     </Link>
 
                     <div className="login">
-                        {localStorage.getItem('avatar') ? (
+                        {user ? (
                             <div className="login__avatar">
-                                <img className="avatar" src={localStorage.getItem('avatar')} alt="img"></img>
+                                <img className="avatar" src="" alt="img"></img>
+                                <span>{user}</span>
                                 <ul className="login__avatar__popup">
                                     <li className="login__avatar__popup--option">
                                         <i className="fa-solid fa-truck-fast"></i>Your Order

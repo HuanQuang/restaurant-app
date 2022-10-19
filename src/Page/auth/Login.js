@@ -3,32 +3,14 @@ import ImageAuth from '../../assets/Auth/Image';
 import { useState } from 'react';
 import MainRoutes from '../../routes/Routes';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import { LoginState } from '../../API/GetAPI';
+import { useDispatch } from 'react-redux';
 function Login() {
-    function setCookie(cname, cvalue, exdays) {
-        const d = new Date();
-        d.setTime(d.getTime() + exdays * 24 * 60 * 60 * 1000);
-        let expires = 'expires=' + d.toUTCString();
-        document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
-    }
-    function getCookie(cname) {
-        let name = cname + '=';
-        let decodedCookie = decodeURIComponent(document.cookie);
-        let ca = decodedCookie.split(';');
-        for (let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) === ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) === 0) {
-                return c.substring(name.length, c.length);
-            }
-        }
-        return '';
-    }
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
-    const [message, setMessage] = useState('');
     const handleUsername = (e) => {
         setUsername(e.target.value);
     };
@@ -36,14 +18,7 @@ function Login() {
         setPassword(e.target.value);
     };
     const handleLogin = () => {
-        axios.post('http://localhost:5000/user/login', { username: username, password: password }).then((response) => {
-            if (response.data.token) {
-                setCookie('token', response.data.token, 1);
-                setMessage('');
-            } else {
-                setMessage(response.data.message);
-            }
-        });
+        LoginState(username, password, navigate, dispatch);
     };
     return (
         <div className="login-Page">
@@ -60,8 +35,7 @@ function Login() {
                                 Create an account
                             </Link>
                         </p>
-                        <form className="login__form--field">
-                            <p className="login__form--field--message">{message}</p>
+                        <form className="login__form--field" type="submit">
                             <label>
                                 Username
                                 <div className="login__form--field--input">
