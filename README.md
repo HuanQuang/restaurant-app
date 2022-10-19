@@ -8,5 +8,9 @@
 - react-paginate <br>
 - sass (scss) <br>
 - swiper <br>
+- React hook form <br>
+- React Toastify <br>
 &#10148;  Back-end: <br>
-- firebase (google-login)
+- Node js <br>
+- express js <br>
+- My SQL <br>
