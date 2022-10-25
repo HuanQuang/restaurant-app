@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { LoginState } from '../../API/GetAPI';
 import { useDispatch } from 'react-redux';
+
 function Login() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
@@ -17,8 +18,8 @@ function Login() {
     const handlePassword = (e) => {
         setPassword(e.target.value);
     };
-    const handleLogin = () => {
-        LoginState(username, password, navigate, dispatch);
+    const handleLogin = async () => {
+        await LoginState(username, password, navigate, dispatch);
     };
     return (
         <div className="login-Page">

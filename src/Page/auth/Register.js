@@ -2,7 +2,6 @@ import './register.scss';
 import ImageAuth from '../../assets/Auth/Image';
 import { ToastContainer, toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
-import MainRoutes from '../../routes/Routes';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
@@ -26,7 +25,7 @@ function Register() {
             console.log(response.data.message);
             if (response.data.message === 'Đăng kí thành công') {
                 success('Đăng kí thành công');
-                setTimeout(() => navigate(MainRoutes.LOGIN.path), 4000);
+                setTimeout(() => navigate('/login'), 4000);
             } else if (response.data.message === 'Tài khoản đã tồn tại') {
                 loser(response.data.message);
             } else loser('Đăng kí thất bại');
@@ -41,7 +40,7 @@ function Register() {
                         <h2>JOIN WITH US</h2>
                         <p className="register__form--qa">
                             Do you already have an account?{' '}
-                            <Link to={MainRoutes.LOGIN.path} className="toCreate">
+                            <Link to="/login" className="toCreate">
                                 Login
                             </Link>
                         </p>
@@ -54,7 +53,7 @@ function Register() {
                                     <input
                                         placeholder="Username"
                                         type="text"
-                                        {...register('user', { required: true, pattern: /^[a-zA-Z0-9\+]*$/ })}
+                                        {...register('user', { required: true, pattern: /^[a-zA-Z0-9]*$/ })}
                                     ></input>
                                 </div>
                                 {errors.user?.type === 'required' && (

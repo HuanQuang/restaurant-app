@@ -3,27 +3,26 @@ import { useSelector } from 'react-redux';
 import { Link, useNavigate } from 'react-router-dom';
 import Image from '../../assets/Home/Image';
 import MainRoutes from '../../routes/Routes';
-import { signOut } from 'firebase/auth';
-import auth from '../../firebase-conflig';
+import { useDispatch } from 'react-redux';
+import { getLogOut } from '../../Features/UserSlice';
 import './header.scss';
 
 function Header() {
+    const dispatch = useDispatch();
+    const action = getLogOut();
     const user = useSelector((state) => {
         return state.user.user;
     });
-
     const Navigate = useNavigate();
+    function delete_cookie(name) {
+        document.cookie = name + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+    }
     const handleSignOut = () => {
-        signOut(auth)
-            .then(() => {
-                localStorage.clear();
-                setTimeout(() => {
-                    Navigate(MainRoutes.LOGIN.path);
-                }, 1000);
-            })
-            .catch((error) => {
-                console.log('error', error);
-            });
+        dispatch(action);
+        delete_cookie('token');
+        setTimeout(() => {
+            Navigate('/login');
+        }, 1000);
     };
     const productList = useSelector((state) => state.cart);
     const qtyCart = productList.reduce((current, item) => current + item.qty, 0);
@@ -65,7 +64,7 @@ function Header() {
                 </div>
 
                 <div className="option">
-                    <Link className="cart" to={MainRoutes.CART.path}>
+                    <Link className="cart" to="/cart">
                         <i class="fa-solid fa-cart-shopping"></i>
                         <span className="amount">{qtyCart}</span>
                     </Link>
@@ -86,7 +85,7 @@ function Header() {
                             </div>
                         ) : (
                             <div>
-                                <Link to={MainRoutes.LOGIN.path} style={{ color: 'white', height: '100%' }}>
+                                <Link to="/login" style={{ color: 'white', height: '100%' }}>
                                     <i class="fa-solid fa-user"></i>Sign in
                                 </Link>
                             </div>

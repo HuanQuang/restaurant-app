@@ -18,6 +18,11 @@ function Pagination(props) {
             position: toast.POSITION.TOP_RIGHT,
         });
     };
+    const messageLogin = () => {
+        toast.error('Bạn cần đăng nhập trước!!', {
+            position: toast.POSITION.TOP_RIGHT,
+        });
+    };
     const [currentItems, setCurrentItems] = useState([]);
     const [pageCount, setPageCount] = useState(0);
     const [itemOffset, setItemOffset] = useState(0);
@@ -95,9 +100,12 @@ function Pagination(props) {
                                         <AddShoppingCartIcon
                                             onClick={(e) => {
                                                 e.preventDefault();
-                                                const action = addTocart(item);
-                                                dispatch(action);
-                                                notify();
+                                                if (localStorage.getItem('user')) {
+                                                    dispatch(addTocart(item));
+                                                    notify();
+                                                } else {
+                                                    messageLogin();
+                                                }
                                             }}
                                             sx={{
                                                 padding: '4px',
