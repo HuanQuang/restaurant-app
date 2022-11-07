@@ -21,13 +21,12 @@ function Register() {
         formState: { errors },
     } = useForm();
     const onSubmit = async (data) => {
-        await axios.post('http://localhost:5000/user/register', data).then((response) => {
-            console.log(response.data.message);
-            if (response.data.message === 'Đăng kí thành công') {
-                success('Đăng kí thành công');
+        await axios.post('http://localhost:8000/api/account/register', data).then((response) => {
+            if (response.data === 'Đăng kí thành công') {
+                success(response.data);
                 setTimeout(() => navigate('/login'), 4000);
-            } else if (response.data.message === 'Tài khoản đã tồn tại') {
-                loser(response.data.message);
+            } else if (response.data === 'Tài khoản đã tồn tại') {
+                loser(response.data);
             } else loser('Đăng kí thất bại');
         });
     };
@@ -93,7 +92,7 @@ function Register() {
                             </label>
                             <label>
                                 Giới tính:
-                                <select {...register('gender')} className="register__form--field--gender">
+                                <select {...register('sex')} className="register__form--field--gender">
                                     <option value="female">Female</option>
                                     <option value="male">Male</option>
                                     <option value="other">Other</option>

@@ -28,7 +28,7 @@ const LoginState = async (username, password, navigate, dispatch) => {
         document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
     }
     await axios
-        .post('http://localhost:5000/user/login', { username: username, password: password })
+        .post('http://localhost:8000/api/account/login', { user: username, password: password })
         .then((response) => {
             if (response.data.token) {
                 dispatch(getLogin(response.data));
