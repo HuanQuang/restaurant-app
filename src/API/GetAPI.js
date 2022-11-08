@@ -28,7 +28,7 @@ const LoginState = async (username, password, navigate, dispatch) => {
         document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/';
     }
     await axios
-        .post('http://localhost:8000/api/account/login', { user: username, password: password })
+        .post('https://e-commerce-sever-huanquang.vercel.app/api/account/login', { user: username, password: password })
         .then((response) => {
             if (response.data.token) {
                 dispatch(getLogin(response.data));

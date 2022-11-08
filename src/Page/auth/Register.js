@@ -21,14 +21,16 @@ function Register() {
         formState: { errors },
     } = useForm();
     const onSubmit = async (data) => {
-        await axios.post('http://localhost:8000/api/account/register', data).then((response) => {
-            if (response.data === 'Đăng kí thành công') {
-                success(response.data);
-                setTimeout(() => navigate('/login'), 4000);
-            } else if (response.data === 'Tài khoản đã tồn tại') {
-                loser(response.data);
-            } else loser('Đăng kí thất bại');
-        });
+        await axios
+            .post('https://e-commerce-sever-huanquang.vercel.app/api/account/register', data)
+            .then((response) => {
+                if (response.data === 'Đăng kí thành công') {
+                    success(response.data);
+                    setTimeout(() => navigate('/login'), 4000);
+                } else if (response.data === 'Tài khoản đã tồn tại') {
+                    loser(response.data);
+                } else loser('Đăng kí thất bại');
+            });
     };
 
     return (
