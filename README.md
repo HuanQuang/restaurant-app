@@ -13,4 +13,4 @@
 &#10148;  Back-end: <br>
 - Node js <br>
 - express js <br>
-- My SQL <br>
+- Mongo DB <br>
